@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Text Encryptor</title>
+  <title>Text Encryptor/Decryptor</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -21,10 +21,17 @@
   </style>
 </head>
 <body>
-  <h1>Text Encryptor</h1>
+  <h1>Text Encryptor/Decryptor</h1>
+
+  <h2>1</h2>
   <textarea id="input-text" placeholder="Enter text to encrypt..."></textarea><br>
   <button id="encrypt-button">Encrypt</button><br>
   <textarea id="encrypted-text" placeholder="Encrypted text will appear here..." readonly></textarea>
+
+  <h2>2</h2>
+  <textarea id="input-encrypted-text" placeholder="Enter text to decrypt..."></textarea><br>
+  <button id="decrypt-button">Decrypt</button><br>
+  <textarea id="decrypted-text" placeholder="Decrypted text will appear here..." readonly></textarea>
 
   <script>
     // Encryption function
@@ -40,12 +47,33 @@
       return text.split('').map(char => encryptionKey[char] || char).join('');
     }
 
-    // Event listener for the button
+    // Decryption function
+    function decrypt(text) {
+      const decryptionKey = {
+        'b': 'a', 'c': 'b', 'd': 'c', 'e': 'd', 'f': 'e', 'g': 'f', 'h': 'g', 'i': 'h',
+        'j': 'i', 'k': 'j', 'l': 'k', 'm': 'l', 'n': 'm', 'o': 'n', 'p': 'o', 'q': 'p',
+        'r': 'q', 's': 'r', 't': 's', 'u': 't', 'v': 'u', 'w': 'v', 'x': 'w', 'y': 'x',
+        'z': 'y', 'a': 'z', ' ': ' ', '\n': '\n', '<': '<', '>': '>', // Add other necessary characters
+        // Include other mappings as needed
+      };
+
+      return text.split('').map(char => decryptionKey[char] || char).join('');
+    }
+
+    // Event listener for the encryption button
     document.getElementById('encrypt-button').addEventListener('click', () => {
       const inputText = document.getElementById('input-text').value;
       const encryptedText = encrypt(inputText);
       document.getElementById('encrypted-text').value = encryptedText;
     });
+
+    // Event listener for the decryption button
+    document.getElementById('decrypt-button').addEventListener('click', () => {
+      const inputEncryptedText = document.getElementById('input-encrypted-text').value;
+      const decryptedText = decrypt(inputEncryptedText);
+      document.getElementById('decrypted-text').value = decryptedText;
+    });
   </script>
 </body>
 </html>
+
