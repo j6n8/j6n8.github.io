@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Tiny LLM Chat</title>
+  <style>
+    body { font-family: system-ui; background:#111; color:#eee; margin:20px; }
+    #chat { border:1px solid #333; padding:10px; height:400px; overflow-y:auto; background:#000; }
+    .user { color:#7bd389; margin:4px 0; }
+    .bot { color:#89a7ff; margin:4px 0; }
+    select, input, button { margin-top:10px; padding:6px; }
+    #input { width:70%; }
+  </style>
+</head>
+<body>
+  <h2>Mini Chat with Transformers.js</h2>
+  <div>
+    Personality: 
+    <select id="persona">
+      <option value="paranoid">Paranoid Dev 🤖</option>
+      <option value="pirate">Pirate 🏴‍☠️</option>
+      <option value="zen">Zen Master 🧘</option>
+    </select>
+  </div>
+  <div id="chat"></div>
+  <input id="input" placeholder="Type something..."/>
+  <button id="send">Send</button>
+
+  <!-- Our chat script will import transformers as a module -->
+  <script type="module" src="chat.js"></script>
+</body>
+</html>
